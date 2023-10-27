@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="row">
+        <div class="col-8 mt-2 mx-auto">
+            <h3>Movie Details</h3>
+            <table class="table table-bordered">
+                <td>
+                    <h2><strong>{{ movie.title }}</strong></h2>
+                    <table class="table table-bordered">
+                        <tr>
+                            <td><strong>Title</strong></td>
+                            <td>{{ movie.title }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Year</strong></td>
+                            <td>{{ movie.year }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>IMDB</strong></td>
+                            <td><a href="https://omdbapi.com/?apikey=599afc0&i={{ movie.imdbID }}" target="_blank">IMDB</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Type</strong></td>
+                            <td>{{ movie.type }}</td>
+                        </tr>
+                        {% if movie.poster != "N/A" %}
+                        <tr>
+                            <td><strong>Poster</strong></td>
+                            <td>
+                                <a href="{{ movie.poster }}" target="_blank">
+                                    <img src="{{ movie.poster }}" alt="Poster" style="width: 100px;">
+                                </a>
+                            </td>
+                        </tr>
+                        {% endif %}
+                    </table>
+                </td>
+            </table>
+            <p class="text-end">
+                <a href="{% url 'movieapp:movie_list' %}">List of movies</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}
